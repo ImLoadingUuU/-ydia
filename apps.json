@@ -1,0 +1,16 @@
+{
+  "name": "🅱️ydia repo",
+  "identifier": "com.XG009.🅱️ydia",
+  "apps": [
+    {
+      "name": "test",
+      "bundleIdentifier": "com.XG009.test",
+      "subtitle": "sub title ahhaha",
+      "developerName": "XG009",
+      "version": "1.0",
+      "downloadURL": "ill finish this later",
+      "description": "nice descriton",
+      "iconID": "1234",
+    }
+  ]
+}
