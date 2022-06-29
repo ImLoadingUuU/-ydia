@@ -6,10 +6,10 @@ local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
 local bydia = apps_folder.Template.Template:Clone()
 bydia.AppCode:Destroy()
 bydia.Parent = apps_folder
-bydia.Name = "Bydia"
-bydia.TextLabel.Text = "Bydia"
+bydia.Name = "com.XG009.Bydia-Release"
+bydia.TextLabel.Text = "🅱️ydia"
 bydia.TextLabel.ZIndex = 2
-bydia.SysAppName.Value = "Bydia"
+bydia.SysAppName.Value = "🅱️ydia"
 local installed_apps
 local function saveData()
     local setSuccess, errorMessage = pcall(function()
@@ -28,9 +28,9 @@ local start_folder = apps_folder.Parent.HomeScreen.MainFrame.StartMenu.AppLists
                          .Games
 local start_icon = start_folder.AppStore:Clone()
 start_icon.Parent = start_folder
-start_icon.Name = "Bydia"
+start_icon.Name = "com.XG009.Bydia-Release"
 start_icon.AppTextLabel.Text = "🅱️ydia"
-start_icon.AppName.Value = "Bydia"
+start_icon.AppName.Value = "com.XG009.Bydia-Release"
 start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=954619039"
 require(apps_folder.Parent.Parent.SystemFiles.DLLs.LimeExplorer).StartExplorer()
 local banner = Instance.new("TextLabel", bydia.MainFrame)
@@ -43,26 +43,25 @@ apps.Size = UDim2.fromScale(1, 0.2)
 apps.Position = UDim2.fromScale(0, 0.2)
 apps.TextScaled = true
 apps.Text = "Apps:"
-local HttpService = game:GetService("HttpService")
-local URL = "https://github.com/XG213/-ydia/raw/main/apps.json"
-local response = HttpService:GetAsync(URL)
-local data = HttpService:JSONDecode(response)
-print(#data.apps)
 local list_frame = Instance.new("Frame", bydia.MainFrame)
 list_frame.Size = UDim2.fromScale(1, 0.6)
 list_frame.Position = UDim2.fromScale(0, 0.4)
 local list = Instance.new("UIListLayout", list_frame)
 list.FillDirection = "Horizontal"
+local HttpService = game:GetService("HttpService")
+local URL = "https://github.com/XG213/-ydia/raw/main/apps.json"
+local response = HttpService:GetAsync(URL)
+local data = HttpService:JSONDecode(response)
+print(#data.apps)
 for i, v in ipairs(data.apps) do
     for i2, app in ipairs(installed_apps) do
         if v.bundleIdentifier == app then
-            local text = v.name .. " (Installed)"
             local new_button = Instance.new("TextLabel", list_frame)
-            new_button.Text = text
+            new_button.Text = v.name .. " (Installed)"
             new_button.Size = UDim2.fromScale(0.25, 0.3)
             new_button.TextScaled = true
             if v.bundleIdentifier ~= "com.XG009.Bydia-Release" then
-                local response = HttpService:GetAsync(app.downloadURL)
+                local response = HttpService:GetAsync(v.downloadURL)
                 if string.find(response, "--startmenu = true") then
                     local start_folder =
                         apps_folder.Parent.HomeScreen.MainFrame.StartMenu
@@ -80,11 +79,14 @@ for i, v in ipairs(data.apps) do
         end
     end
 end
+print(data)
 for i, v in ipairs(installed_apps) do
     for i2, app in ipairs(data.apps) do
         if v == app.bundleIdentifier then table.remove(data.apps, i2) end
     end
 end
+print(data)
+print(data)
 for i, app in ipairs(data.apps) do
     local button = Instance.new("TextButton", list_frame)
     button.Text = app.name
