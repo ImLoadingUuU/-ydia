@@ -48,6 +48,17 @@ list_frame.Size = UDim2.fromScale(1, 0.6)
 list_frame.Position = UDim2.fromScale(0, 0.4)
 local list = Instance.new("UIListLayout", list_frame)
 list.FillDirection = "Horizontal"
+_G.makeapp = function(name, bundleIdentifier)
+    local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
+                            .LimeOS.UIs.Apps
+    local app = apps_folder.Template.Template:Clone()
+    app.AppCode:Destroy()
+    app.Parent = apps_folder
+    app.Name = bundleIdentifier
+    app.TextLabel.Text = name
+    app.TextLabel.ZIndex = 2
+    app.SysAppName.Value = name
+end
 local HttpService = game:GetService("HttpService")
 local URL = "https://github.com/XG213/-ydia/raw/main/apps.json"
 local response = HttpService:GetAsync(URL)
@@ -71,7 +82,8 @@ for i, v in ipairs(data.apps) do
                     start_icon.Name = v.bundleIdentifier
                     start_icon.AppTextLabel.Text = v.name
                     start_icon.AppName.Value = v.bundleIdentifier
-                    start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=" .. v.iconID
+                    start_icon.AppImage.Image =
+                        "http://www.roblox.com/asset/?id=" .. v.iconID
                     require(apps_folder.Parent.Parent.SystemFiles.DLLs
                                 .LimeExplorer).StartExplorer()
                 end
@@ -100,7 +112,8 @@ for i, app in ipairs(data.apps) do
             start_icon.Name = app.bundleIdentifier
             start_icon.AppTextLabel.Text = app.name
             start_icon.AppName.Value = app.bundleIdentifier
-            start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=" .. v.iconID
+            start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=" ..
+                                            v.iconID
             require(apps_folder.Parent.Parent.SystemFiles.DLLs.LimeExplorer).StartExplorer()
         end
         table.insert(installed_apps, app.bundleIdentifier)
