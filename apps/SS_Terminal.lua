@@ -4,7 +4,7 @@ local app = apps_folder.Template.Template:Clone()
 app.AppCode:Destroy()
 app.Parent = apps_folder
 app.Name = "com.XG009.SS_Terminal"
-app.TextLabel.Text = "SS_Terminal"
+app.TextLabel.Text = "SS Terminal"
 app.TextLabel.ZIndex = 2
 app.SysAppName.Value = "SS_Terminal"
 local input = Instance.new("TextBox", app.MainFrame)
