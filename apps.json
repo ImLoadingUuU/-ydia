@@ -21,6 +21,16 @@
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/test.lua",
       "description": "nice descriton",
       "iconID": "1234"
+    },
+    {
+      "name": "SS Terminal",
+      "bundleIdentifier": "com.XG009.SS_Terminal",
+      "subtitle": "sub title ahhaha",
+      "developerName": "XG009",
+      "version": "1.0",
+      "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/SS_Terminal.lua",
+      "description": "nice descriton",
+      "iconID": "1234"
     }
   ]
 }
