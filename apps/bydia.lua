@@ -68,9 +68,9 @@ for i, v in ipairs(data.apps) do
                             .AppLists.Games
                     local start_icon = start_folder.AppStore:Clone()
                     start_icon.Parent = start_folder
-                    start_icon.Name = app.bundleIdentifier
-                    start_icon.AppTextLabel.Text = app.name
-                    start_icon.AppName.Value = app.bundleIdentifier
+                    start_icon.Name = v.bundleIdentifier
+                    start_icon.AppTextLabel.Text = v.name
+                    start_icon.AppName.Value = v.bundleIdentifier
                     require(apps_folder.Parent.Parent.SystemFiles.DLLs
                                 .LimeExplorer).StartExplorer()
                 end 
