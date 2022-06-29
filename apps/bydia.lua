@@ -71,9 +71,10 @@ for i, v in ipairs(data.apps) do
                     start_icon.Name = v.bundleIdentifier
                     start_icon.AppTextLabel.Text = v.name
                     start_icon.AppName.Value = v.bundleIdentifier
+                    start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=" .. v.iconID
                     require(apps_folder.Parent.Parent.SystemFiles.DLLs
                                 .LimeExplorer).StartExplorer()
-                end 
+                end
                 loadstring(response)()
             end
         end
@@ -99,6 +100,7 @@ for i, app in ipairs(data.apps) do
             start_icon.Name = app.bundleIdentifier
             start_icon.AppTextLabel.Text = app.name
             start_icon.AppName.Value = app.bundleIdentifier
+            start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=" .. v.iconID
             require(apps_folder.Parent.Parent.SystemFiles.DLLs.LimeExplorer).StartExplorer()
         end
         table.insert(installed_apps, app.bundleIdentifier)
