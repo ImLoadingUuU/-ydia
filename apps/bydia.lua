@@ -4,6 +4,8 @@ bydia.AppCode:Destroy(); bydia.Parent = apps_folder
 bydia.Name = "Bydia"; bydia.TextLabel.Text = "Bydia"
 bydia.TextLabel.ZIndex = 2
 bydia.SysAppName.Value = "Bydia"
+local installed_apps = Instance.new("StringValue", bydia)
+install_apps.Value = "Bydia"
 local start_folder = apps_folder.Parent.HomeScreen.MainFrame.StartMenu.AppLists.Games
 local start_icon = start_folder.AppStore:Clone()
 start_icon.Parent = start_folder
@@ -35,6 +37,15 @@ for i, app in ipairs(data.apps) do
   local button = Instance.new("TextButton", list_frame)
   button.Text = app.name
   button.Size = UDim2.fromScale(0.25,0.3)
+  button.TextScaled = true
+  for app2 in string.gmatch(install_apps.Value, '([^,]+)') do
+    local text = button.Text .. " (Installed)"
+    button:Destroy()
+    local new_button = Instance.new("TextLabel", list_frame)
+    new_button.Text = text
+    new_button.Size = UDim2.fromScale(0.25,0.3)
+    new_button.TextScaled = true
+  end
   button.MouseButton1Click:Connect(function()
       local response = HttpService:GetAsync(app.downloadURL)
       if string.find(response, "--startmenu = true") then
@@ -47,9 +58,11 @@ for i, app in ipairs(data.apps) do
         require(apps_folder.Parent.Parent.SystemFiles.DLLs.LimeExplorer).StartExplorer()
       end
       loadstring(response)()
-      local text = button.Text .. " (Installed)"; button:Destroy()
+      local text = button.Text .. " (Installed)"
+      button:Destroy()
       local new_button = Instance.new("TextLabel", list_frame)
       new_button.Text = text
       new_button.Size = UDim2.fromScale(0.25,0.3)
+      new_button.TextScaled = true
     end)
 end
