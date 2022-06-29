@@ -41,7 +41,7 @@ banner.Text = "🅱️ydia"
 local apps = Instance.new("TextLabel", bydia.MainFrame)
 apps.Size = UDim2.fromScale(1, 0.2)
 apps.Position = UDim2.fromScale(0, 0.2)
-apps.TextScaled = true
+apps.TextScaled = trueugh
 apps.Text = "Apps:"
 local list_frame = Instance.new("Frame", bydia.MainFrame)
 list_frame.Size = UDim2.fromScale(1, 0.6)
@@ -79,14 +79,11 @@ for i, v in ipairs(data.apps) do
         end
     end
 end
-print(data)
 for i, v in ipairs(installed_apps) do
     for i2, app in ipairs(data.apps) do
         if v == app.bundleIdentifier then table.remove(data.apps, i2) end
     end
 end
-print(data)
-print(data)
 for i, app in ipairs(data.apps) do
     local button = Instance.new("TextButton", list_frame)
     button.Text = app.name
