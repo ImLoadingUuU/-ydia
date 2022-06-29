@@ -1,6 +1,7 @@
 local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui.LimeOS.UIs.Apps
 local bydia = apps_folder.Template.Template:Clone()
-bydia.AppCode:Destroy(); bydia.Parent = apps_folder
+bydia.AppCode:Destroy()
+bydia.Parent = apps_folder
 bydia.Name = "Bydia"
 bydia.TextLabel.Text = "Bydia"
 bydia.TextLabel.ZIndex = 2
