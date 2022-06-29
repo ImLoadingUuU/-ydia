@@ -3,7 +3,17 @@
   "identifier": "com.XG009.Bydia",
   "apps": [
     {
-      "name": "test",
+      "name": "Bydia",
+      "bundleIdentifier": "com.XG009.Bydia-Release",
+      "subtitle": "sub title ahhaha",
+      "developerName": "XG009",
+      "version": "0.1",
+      "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/bydia.lua",
+      "description": "nice descriton",
+      "iconID": "1234"
+    },
+    {
+      "name": "Test_app",
       "bundleIdentifier": "com.XG009.test",
       "subtitle": "sub title ahhaha",
       "developerName": "XG009",
