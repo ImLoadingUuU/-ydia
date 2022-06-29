@@ -1,13 +1,5 @@
 -- startmenu = true
-local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
-                        .LimeOS.UIs.Apps
-local app = apps_folder.Template.Template:Clone()
-app.AppCode:Destroy()
-app.Parent = apps_folder
-app.Name = "com.XG009.SS_Terminal"
-app.TextLabel.Text = "SS Terminal"
-app.TextLabel.ZIndex = 2
-app.SysAppName.Value = "SS Terminal"
+_G.makeapp("SS Terminal", "com.XG009.SS_Terminal")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local remoteEvent = ReplicatedStorage:WaitForChild("HttpRequest")
 remoteEvent:FireAllClients(
