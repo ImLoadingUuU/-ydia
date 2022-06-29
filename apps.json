@@ -10,7 +10,7 @@
       "version": "0.1",
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/bydia.lua",
       "description": "nice descriton",
-      "iconID": "1234"
+      "iconID": "954619039"
     },
     {
       "name": "Test_app",
@@ -20,7 +20,7 @@
       "version": "1.0",
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/test.lua",
       "description": "nice descriton",
-      "iconID": "1234"
+      "iconID": "4509163037"
     },
     {
       "name": "SS Terminal",
@@ -30,7 +30,7 @@
       "version": "1.0",
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/SS_Terminal.lua",
       "description": "nice descriton",
-      "iconID": "1234"
+      "iconID": "10046269607"
     }
   ]
 }
