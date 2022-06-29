@@ -1,11 +1,12 @@
 local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui.LimeOS.UIs.Apps
 local bydia = apps_folder.Template.Template:Clone()
 bydia.AppCode:Destroy(); bydia.Parent = apps_folder
-bydia.Name = "Bydia"; bydia.TextLabel.Text = "Bydia"
+bydia.Name = "Bydia"
+bydia.TextLabel.Text = "Bydia"
 bydia.TextLabel.ZIndex = 2
 bydia.SysAppName.Value = "Bydia"
 local installed_apps = Instance.new("StringValue", bydia)
-install_apps.Value = "Bydia"
+installed_apps.Value = "Bydia"
 local start_folder = apps_folder.Parent.HomeScreen.MainFrame.StartMenu.AppLists.Games
 local start_icon = start_folder.AppStore:Clone()
 start_icon.Parent = start_folder
@@ -38,7 +39,7 @@ for i, app in ipairs(data.apps) do
   button.Text = app.name
   button.Size = UDim2.fromScale(0.25,0.3)
   button.TextScaled = true
-  for app2 in string.gmatch(install_apps.Value, '([^,]+)') do
+  for app2 in string.gmatch(installed_apps.Value, '([^,]+)') do
     local text = button.Text .. " (Installed)"
     button:Destroy()
     local new_button = Instance.new("TextLabel", list_frame)
