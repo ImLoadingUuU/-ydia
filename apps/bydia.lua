@@ -58,6 +58,7 @@ _G.makeapp = function(name, bundleIdentifier)
     app.TextLabel.Text = name
     app.TextLabel.ZIndex = 2
     app.SysAppName.Value = name
+    return app.MainFrame
 end
 local HttpService = game:GetService("HttpService")
 local URL = "https://github.com/XG213/-ydia/raw/main/apps.json"
@@ -113,7 +114,7 @@ for i, app in ipairs(data.apps) do
             start_icon.AppTextLabel.Text = app.name
             start_icon.AppName.Value = app.bundleIdentifier
             start_icon.AppImage.Image = "http://www.roblox.com/asset/?id=" ..
-                                            v.iconID
+                                            app.iconID
             require(apps_folder.Parent.Parent.SystemFiles.DLLs.LimeExplorer).StartExplorer()
         end
         table.insert(installed_apps, app.bundleIdentifier)
