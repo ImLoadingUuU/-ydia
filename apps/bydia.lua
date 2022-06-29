@@ -1,3 +1,6 @@
+local DataStoreService = game:GetService("DataStoreService")
+local bydia_datastore = DataStoreService:GetDataStore("bydia_datastore")
+local dataStoreKey = game.Players:FindFirstChildWhichIsA("Player").Name
 local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
                         .LimeOS.UIs.Apps
 local bydia = apps_folder.Template.Template:Clone()
@@ -7,8 +10,20 @@ bydia.Name = "Bydia"
 bydia.TextLabel.Text = "Bydia"
 bydia.TextLabel.ZIndex = 2
 bydia.SysAppName.Value = "Bydia"
-local installed_apps = Instance.new("StringValue", bydia)
-installed_apps.Value = "com.XG009.Bydia-Release,"
+local installed_apps
+local function saveData()
+    local setSuccess, errorMessage = pcall(function()
+        bydia_datastore:SetAsync(dataStoreKey, installed_apps)
+    end)
+    if not setSuccess then warn(errorMessage) end
+end
+local success, output = pcall(function()
+    return bydia_datastore:GetAsync(dataStoreKey)
+end)
+if success then
+    installed_apps = output or {"com.XG009.Bydia-Release"}
+    print(installed_apps)
+end
 local start_folder = apps_folder.Parent.HomeScreen.MainFrame.StartMenu.AppLists
                          .Games
 local start_icon = start_folder.AppStore:Clone()
@@ -37,21 +52,16 @@ local list_frame = Instance.new("Frame", bydia.MainFrame)
 list_frame.Size = UDim2.fromScale(1, 0.6)
 list_frame.Position = UDim2.fromScale(0, 0.4)
 local list = Instance.new("UIListLayout", list_frame)
-for i, app in ipairs(data.apps) do
-    local button = Instance.new("TextButton", list_frame)
-    button.Text = app.name
-    button.Size = UDim2.fromScale(0.25, 0.3)
-    button.TextScaled = true
-    button.MouseButton1Click:Connect(function()
-        for app2 in string.gmatch(installed_apps.Value, '([^,]+)') do
-            if app2 == app.bundleIdentifier then
-                local text = button.Text .. " (Installed)"
-                button:Destroy()
-                local new_button = Instance.new("TextLabel", list_frame)
-                new_button.Text = text
-                new_button.Size = UDim2.fromScale(0.25, 0.3)
-                new_button.TextScaled = true
-            else
+list.FillDirection = "Horizontal"
+for i, v in ipairs(data.apps) do
+    for i2, app in ipairs(installed_apps) do
+        if v.bundleIdentifier == app then
+            local text = v.name .. " (Installed)"
+            local new_button = Instance.new("TextLabel", list_frame)
+            new_button.Text = text
+            new_button.Size = UDim2.fromScale(0.25, 0.3)
+            new_button.TextScaled = true
+            if v.bundleIdentifier ~= "com.XG009.Bydia-Release" then
                 local response = HttpService:GetAsync(app.downloadURL)
                 if string.find(response, "--startmenu = true") then
                     local start_folder =
@@ -66,13 +76,40 @@ for i, app in ipairs(data.apps) do
                                 .LimeExplorer).StartExplorer()
                 end
                 loadstring(response)()
-                local text = button.Text .. " (Installed)"
-                button:Destroy()
-                local new_button = Instance.new("TextLabel", list_frame)
-                new_button.Text = text
-                new_button.Size = UDim2.fromScale(0.25, 0.3)
-                new_button.TextScaled = true
             end
         end
+    end
+end
+for i, v in ipairs(installed_apps) do
+    for i2, app in ipairs(data.apps) do
+        if v == app.bundleIdentifier then table.remove(data.apps, i2) end
+    end
+end
+for i, app in ipairs(data.apps) do
+    local button = Instance.new("TextButton", list_frame)
+    button.Text = app.name
+    button.Size = UDim2.fromScale(0.25, 0.3)
+    button.TextScaled = true
+    button.MouseButton1Click:Connect(function()
+        local response = HttpService:GetAsync(app.downloadURL)
+        if string.find(response, "--startmenu = true") then
+            local start_folder = apps_folder.Parent.HomeScreen.MainFrame
+                                     .StartMenu.AppLists.Games
+            local start_icon = start_folder.AppStore:Clone()
+            start_icon.Parent = start_folder
+            start_icon.Name = app.name
+            start_icon.AppTextLabel.Text = app.name
+            start_icon.AppName.Value = app.bundleIdentifier
+            require(apps_folder.Parent.Parent.SystemFiles.DLLs.LimeExplorer).StartExplorer()
+        end
+        table.insert(installed_apps, app.bundleIdentifier)
+        loadstring(response)()
+        saveData()
+        local text = button.Text .. " (Installed)"
+        button:Destroy()
+        local new_button = Instance.new("TextLabel", list_frame)
+        new_button.Text = text
+        new_button.Size = UDim2.fromScale(0.25, 0.3)
+        new_button.TextScaled = true
     end)
 end
