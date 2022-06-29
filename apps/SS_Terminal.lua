@@ -17,4 +17,6 @@ execute.Size = UDim2.fromScale(1,0.5)
 execute.Position = UDim2.fromScale(0,0.5)
 execute.Text = "Execute!"
 
-loadstring(input.Text)()
+execute.MouseButton1Click:Connect(function()
+    loadstring(input.Text)()
+end)
