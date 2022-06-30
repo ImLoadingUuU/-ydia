@@ -31,6 +31,16 @@
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/SS_Terminal.lua",
       "description": "SS Terminal is a basic terminal app with server side command execution.",
       "iconID": "10046269607"
+    },
+    {
+      "name": "Rainbow BSOD",
+      "bundleIdentifier": "com.XG009.Rainbow_BSOD",
+      "subtitle": "sub title ahhaha",
+      "developerName": "XG009",
+      "version": "1.0",
+      "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/Rainbow_BSOD.lua",
+      "description": "Replaces the basic black of the BSOD with a pride flag :3, Works well with BSOD editor.",
+      "iconID": "9871205641"
     }
   ]
 }
