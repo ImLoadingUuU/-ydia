@@ -102,11 +102,12 @@ function list_apps()
     local list_frame = Instance.new("ScrollingFrame", bydia.MainFrame)
     list_frame.Size = UDim2.fromScale(1, 0.6)
     list_frame.Position = UDim2.fromScale(0, 0.4)
+    list_frame.CanvasSize = UDim2.fromScale(0, 0.9)
     local list = Instance.new("UIListLayout", list_frame)
     list.FillDirection = "Horizontal"
-    local current_app = false;
+    local current_app = false
     for i, app in ipairs(data.apps) do
-        current_app = false;
+        current_app = false
         for i2, installed_app in ipairs(installed_apps) do
             if app.bundleIdentifier == installed_app then
                 current_app = true
@@ -115,7 +116,7 @@ function list_apps()
         if current_app == false then
             local button = Instance.new("TextButton", list_frame)
             button.Text = app.name
-            button.Size = UDim2.fromScale(0.25, 0.3)
+            button.Size = UDim2.fromScale(0.24, 0.25)
             button.TextScaled = true
             button.MouseButton1Click:Connect(function()
                 app_info(app, current_app)
@@ -123,7 +124,7 @@ function list_apps()
         else
             local button = Instance.new("TextButton", list_frame)
             button.Text = app.name .. " (Installed)"
-            button.Size = UDim2.fromScale(0.25, 0.3)
+            button.Size = UDim2.fromScale(0.24, 0.25)
             button.TextScaled = true
             button.MouseButton1Click:Connect(function()
                 app_info(app, current_app)
