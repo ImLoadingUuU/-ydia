@@ -99,7 +99,7 @@ function list_apps()
     apps.Position = UDim2.fromScale(0, 0.2)
     apps.TextScaled = true
     apps.Text = "Apps:"
-    local list_frame = Instance.new("Frame", bydia.MainFrame)
+    local list_frame = Instance.new("ScrollingFrame", bydia.MainFrame)
     list_frame.Size = UDim2.fromScale(1, 0.6)
     list_frame.Position = UDim2.fromScale(0, 0.4)
     local list = Instance.new("UIListLayout", list_frame)
