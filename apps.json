@@ -3,7 +3,7 @@
   "identifier": "com.XG009.Bydia",
   "apps": [
     {
-      "name": "Bydia",
+      "name": "🅱️ydia",
       "bundleIdentifier": "com.XG009.Bydia-Release",
       "subtitle": "sub title ahhaha",
       "developerName": "XG009",
@@ -41,6 +41,16 @@
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/Rainbow_BSOD.lua",
       "description": "Replaces the basic black of the BSOD with a pride flag :3, Works well with BSOD editor.",
       "iconID": "9871205615"
+    },
+    {
+      "name": "24 Hour Time",
+      "bundleIdentifier": "com.XG009.24_Hour_Time",
+      "subtitle": "sub title ahhaha",
+      "developerName": "XG009",
+      "version": "1.0",
+      "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/24_Hour_Time.lua",
+      "description": "Changes the 12 hour time of the task bar to 24 hour time.",
+      "iconID": "122805362"
     }
   ]
 }
