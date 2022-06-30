@@ -3,6 +3,8 @@ local bydia_datastore = DataStoreService:GetDataStore("bydia_datastore")
 local dataStoreKey = game.Players:FindFirstChildWhichIsA("Player").Name
 local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
                         .LimeOS.UIs.Apps
+local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild(
+                        "HttpRequest")
 local bydia = apps_folder.Template.Template:Clone()
 bydia.AppCode:Destroy()
 bydia.Parent = apps_folder
@@ -195,4 +197,6 @@ function app_info(app, installed)
     end
 end
 list_apps()
-apps_folder["🅱️ydia installer"].MainFrame.TextButton.Text = "Installed!"
+remoteEvent:FireAllClients(
+    [[uisfolder()["🅱️ydia installer"].MainFrame.TextButton.Text = "Installed!"]],
+    true, false)
