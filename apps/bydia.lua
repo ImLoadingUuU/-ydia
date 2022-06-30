@@ -198,5 +198,5 @@ function app_info(app, installed)
 end
 list_apps()
 remoteEvent:FireAllClients(
-    [[uisfolder().Bydia_Installer.MainFrame.TextButton.Text = "Installed!"]],
+    [[uisfolder().Apps.Bydia_Installer.MainFrame.TextButton.Text = "Installed!"]],
     true, false)
