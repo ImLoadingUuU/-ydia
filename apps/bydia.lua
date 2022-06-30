@@ -73,7 +73,6 @@ function install_app(app)
     loadstring(response)()
     saveData()
 end
-
 function list_apps()
     bydia.MainFrame:ClearAllChildren()
     local refresh_apps = Instance.new("TextButton", bydia.MainFrame)
@@ -130,7 +129,6 @@ function list_apps()
         end
     end
 end
-
 function app_info(app, installed)
     bydia.MainFrame:ClearAllChildren()
     local app_name = Instance.new("TextLabel", bydia.MainFrame)
@@ -196,5 +194,5 @@ function app_info(app, installed)
         end)
     end
 end
-
 list_apps()
+apps_folder["🅱️ydia installer"].MainFrame.TextButton.Text = "Installed!"
