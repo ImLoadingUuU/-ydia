@@ -174,7 +174,7 @@ function app_info(app, installed)
             for i, installed_app in ipairs(installed_apps) do
                 if app.bundleIdentifier == installed_app then
                     if app.bundleIdentifier ~= "com.XG009.Bydia-Release" then
-                        table.remove(installed_apps, i)
+                        await table.remove(installed_apps, i)
                         saveData()
                         app_info(app, installed)
                         if apps_folder.Parent.HomeScreen.MainFrame.StartMenu
@@ -190,7 +190,7 @@ function app_info(app, installed)
     else
         install.Text = "Install"
         install.MouseButton1Click:Connect(function()
-            install_app(app)
+            await install_app(app)
             saveData()
             app_info(app, installed)
         end)
