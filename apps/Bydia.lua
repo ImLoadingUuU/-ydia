@@ -171,6 +171,7 @@ function app_info(app, installed)
     if app_installed == true then
         install.Text = "Uninstall"
         install.MouseButton1Click:Connect(function()
+            install:Destroy()
             for i, installed_app in ipairs(installed_apps) do
                 if app.bundleIdentifier == installed_app then
                     if app.bundleIdentifier ~= "com.XG009.Bydia-Release" then
@@ -190,6 +191,7 @@ function app_info(app, installed)
     else
         install.Text = "Install"
         install.MouseButton1Click:Connect(function()
+            install:Destroy()
             install_app(app)
             saveData()
             app_info(app, true)
