@@ -1,3 +1,4 @@
+--startmenu = true
 local app = _G.makeapp("BootUnlocker Installer", "com.XG009.BootUnlocker_Installer")
 local info = Instance.new("TextButton", app);
 info.Size = UDim2.fromScale(0.8, 0.5);
