@@ -15,7 +15,7 @@ loadlib("LimeExplorer").StartApp(uisfolder().Apps.UserAppStore, "User Appstore")
 loadlib("LimeExplorer").StartApp(uisfolder().Apps.LimeWeb, "LimeWeb")
 uisfolder().Apps.LimeWeb.MainFrame.WebSites:WaitForChild(
     "first-limeos-website.lime")
-local app = uisfolder().Apps.com.idk.Antivirus.MainFrame
+local app = uisfolder().Apps["com.idk.Antivirus"].MainFrame
 local backup = uisfolder().Apps.LimeWeb.MainFrame.WebSites:Clone()
 backup.Parent = app.Parent
 loadlib("LimeExplorer").CloseApp("LimeWeb")
