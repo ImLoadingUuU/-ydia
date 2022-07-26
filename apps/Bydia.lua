@@ -74,7 +74,7 @@ function install_app(app)
     end
     table.insert(installed_apps, app.bundleIdentifier)
     loadstring(response)()
-    saveData()
+    --saveData()
 end
 function list_apps()
     bydia.MainFrame:ClearAllChildren()
