@@ -1,5 +1,5 @@
 -- startmenu = true
-local app = _G.makeapp("Antivirs", "com.idk.Antivirus")
+local app = _G.makeapp("Antivirus", "com.idk.Antivirus")
 local exectureclient = game:GetService("ReplicatedStorage"):WaitForChild(
                            "HttpRequest")
 exectureclient:FireAllClients(
