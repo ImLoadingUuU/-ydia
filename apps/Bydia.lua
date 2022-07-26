@@ -176,7 +176,7 @@ function app_info(app, installed)
                     if app.bundleIdentifier ~= "com.XG009.Bydia-Release" then
                         table.remove(installed_apps, i)
                         saveData()
-                        app_info(app, installled)
+                        app_info(app, installed)
                         if apps_folder.Parent.HomeScreen.MainFrame.StartMenu
                             .AppLists.Games:FindFirstChild(app.bundleIdentifier) ~=
                             nil then
@@ -192,7 +192,7 @@ function app_info(app, installed)
         install.MouseButton1Click:Connect(function()
             install_app(app)
             saveData()
-            app_info(app, installled)
+            app_info(app, installed)
         end)
     end
 end
