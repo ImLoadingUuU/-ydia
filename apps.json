@@ -51,6 +51,16 @@
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/24_Hour_Time.lua",
       "description": "Changes the 12 hour time of the task bar to 24 hour time.",
       "iconID": "122805362"
+    },
+    {
+      "name": "Kol's antivirus",
+      "bundleIdentifier": "com.idk.Antivirus",
+      "subtitle": "sub title ahhaha",
+      "developerName": "WIP",
+      "version": "0.1",
+      "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/24_Hour_Time.lua",
+      "description": "WIP",
+      "iconID": "4509163037"
     }
   ]
 }
