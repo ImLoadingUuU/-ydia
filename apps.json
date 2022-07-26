@@ -61,6 +61,16 @@
       "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/Kols_Antivirus.lua",
       "description": "WIP",
       "iconID": "4509163037"
+    },
+    {
+      "name": "BootUnlocker",
+      "bundleIdentifier": "com.XG009.BootUnlocker_Installer",
+      "subtitle": "sub title ahhaha",
+      "developerName": "XG009",
+      "version": "0.1",
+      "downloadURL": "https://github.com/XG213/-ydia/raw/main/apps/BootUnlocker_Installer.lua",
+      "description": "BootUnlocker allows custom OS's to be installed (acsessable via BIOS)",
+      "iconID": "4509163037"
     }
   ]
 }
