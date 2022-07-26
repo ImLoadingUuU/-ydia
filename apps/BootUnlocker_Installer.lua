@@ -34,6 +34,7 @@ install.MouseButton1Click:Connect(function()
         for i, Partion in ipairs(PhysicalDisk0:GetChildren()) do
             for i2, File in ipairs(Partion:GetChildren()) do
                 if string.find(File.Name, ".efi") then
+                    print(File)
                     local decoded_json = HttpService:JSONDecode(File.Value)
                     local bootoption = Instance.new("TextButton",
                                                     bootunlocker_frame)
