@@ -6,6 +6,7 @@ local apps_folder = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
 local remoteEvent = game:GetService("ReplicatedStorage"):WaitForChild(
                         "HttpRequest")
 local bydia = apps_folder.Template.Template:Clone()
+local Players = game:GetService("Players")
 bydia.AppCode:Destroy()
 bydia.Parent = apps_folder
 bydia.Name = "com.XG009.Bydia-Release"
@@ -175,8 +176,8 @@ function app_info(app, installed)
                 if app.bundleIdentifier == installed_app then
                     if app.bundleIdentifier ~= "com.XG009.Bydia-Release" then
                         table.remove(installed_apps, i)
-                        saveData()
-                        --app_info(app, false)
+                        --saveData()
+                        -- app_info(app, false)
                         list_apps()
                         if apps_folder.Parent.HomeScreen.MainFrame.StartMenu
                             .AppLists.Games:FindFirstChild(app.bundleIdentifier) ~=
@@ -192,8 +193,8 @@ function app_info(app, installed)
         install.Text = "Install"
         install.MouseButton1Click:Connect(function()
             install_app(app)
-            saveData()
-            --app_info(app, true)
+            --saveData()
+            -- app_info(app, true)
             list_apps()
         end)
     end
@@ -202,3 +203,6 @@ list_apps()
 remoteEvent:FireAllClients(
     [[uisfolder().Apps.Bydia_Installer.MainFrame.TextButton.Text = "Installed!"]],
     true, false)
+Players.PlayerRemoving:Connect(function(player)
+    saveData()
+end)
