@@ -1,13 +1,15 @@
 --startmenu = true
 local app = _G.makeapp("BootUnlocker Installer", "com.XG009.BootUnlocker_Installer")
-local info = Instance.new("TextButton", app);
+local info = Instance.new("TextLabel", app);
 info.Size = UDim2.fromScale(0.8, 0.5);
 info.Position = UDim2.fromScale(0, 0);
 info.Text = "Welcome to installer blah blah blah";
+info.TextScaled = true
 local install = Instance.new("TextButton", app);
 install.Size = UDim2.fromScale(1, 0.5);
 install.Position = UDim2.fromScale(0, 0.5);
 install.Text = "Install!";
+install.TextScaled = true
 install.MouseButton1Click:Connect(function()
     install:Destroy()
     local LimeOS = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
