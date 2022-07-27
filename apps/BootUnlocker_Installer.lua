@@ -58,7 +58,7 @@ install.MouseButton1Click:Connect(function()
                     bootoption.Size = UDim2.fromScale(0.8, 0.2)
                     bootoption.Position = UDim2.fromScale(0.1, count)
                     bootoption.MouseButton1Click:Connect(function()
-                        loadstring(primary[decoded_json.boot].Value)()
+                        loadstring(PhysicalDisk0.primary[decoded_json.boot].Value)()
                     end)
                     count = count + 0.2
                 end
