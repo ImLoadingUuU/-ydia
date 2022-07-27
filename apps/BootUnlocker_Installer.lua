@@ -12,7 +12,7 @@ install.Text = "Install!";
 install.TextScaled = true
 install.MouseButton1Click:Connect(function()
     install:Destroy()
-    local install = Instance.new("TextButton", app);
+    local install = Instance.new("TextLabel", app);
     install.Size = UDim2.fromScale(1, 0.5);
     install.Position = UDim2.fromScale(0, 0.5);
     install.Text = "Installed!!";
@@ -30,10 +30,14 @@ install.MouseButton1Click:Connect(function()
     bootunlocker_frame.Size = UDim2.fromScale(1, 1)
     bootunlocker_frame.Position = UDim2.fromScale(0, 0)
     local back = Instance.new("TextButton", bootunlocker_frame)
-    back.Size = UDim2.fromScale(0.2, 0.2);
-    back.Position = UDim2.fromScale(0, 0.8);
+    back.Size = UDim2.fromScale(0.1, 0.1);
+    back.Position = UDim2.fromScale(0, 0.9);
     back.Text = "Back";
     back.TextScaled = true
+    back.MouseButton1Click:Connect(function()
+        bootunlocker_frame.Visible = false
+        LimeOS.UIs.BIOS.MainFrame.Visible = true
+    end)
     local clone = LimeOS.UIs.BIOS.MainFrame.Options.DOS_BOOT:Clone()
     clone.Parent = LimeOS.UIs.BIOS.MainFrame.Options
     clone.Name = "BOOTUNLOCKER_BOOT"
