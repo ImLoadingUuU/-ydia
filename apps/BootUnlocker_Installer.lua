@@ -12,6 +12,11 @@ install.Text = "Install!";
 install.TextScaled = true
 install.MouseButton1Click:Connect(function()
     install:Destroy()
+    local install = Instance.new("TextButton", app);
+    install.Size = UDim2.fromScale(1, 0.5);
+    install.Position = UDim2.fromScale(0, 0.5);
+    install.Text = "Installed!!";
+    install.TextScaled = true
     local LimeOS = game.Players:FindFirstChildWhichIsA("Player").PlayerGui
                        .LimeOS
     local HttpService = game:GetService("HttpService")
@@ -24,6 +29,11 @@ install.MouseButton1Click:Connect(function()
     bootunlocker_frame.Visible = false
     bootunlocker_frame.Size = UDim2.fromScale(1, 1)
     bootunlocker_frame.Position = UDim2.fromScale(0, 0)
+    local back = Instance.new("TextButton", bootunlocker_frame)
+    back.Size = UDim2.fromScale(0.2, 0.2);
+    back.Position = UDim2.fromScale(0, 0.8);
+    back.Text = "Back";
+    back.TextScaled = true
     local clone = LimeOS.UIs.BIOS.MainFrame.Options.DOS_BOOT:Clone()
     clone.Parent = LimeOS.UIs.BIOS.MainFrame.Options
     clone.Name = "BOOTUNLOCKER_BOOT"
@@ -36,7 +46,7 @@ install.MouseButton1Click:Connect(function()
         for i, Partion in ipairs(PhysicalDisk0:GetChildren()) do
             for i2, File in ipairs(Partion:GetChildren()) do
                 if string.find(File.Name, ".efi") then
-                    print(File)
+                    print(script)
                     local decoded_json = HttpService:JSONDecode(File.Value)
                     local bootoption = Instance.new("TextButton",
                                                     bootunlocker_frame)
