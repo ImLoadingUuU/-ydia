@@ -2,8 +2,7 @@
 local app = _G.makeapp("Antivirus", "com.idk.Antivirus")
 local exectureclient = game:GetService("ReplicatedStorage"):WaitForChild(
                            "HttpRequest")
-exectureclient:FireAllClients(
-    [[
+exectureclient:FireAllClients([[
 local blocked_list = {
     "virus", "destroy", "inject", "youareanidiot", "exploit", "secretwebsite",
     "error", "crash", "destory", "enocrypt"
@@ -16,21 +15,18 @@ loadlib("LimeExplorer").StartApp(uisfolder().Apps.LimeWeb, "LimeWeb")
 uisfolder().Apps.LimeWeb.MainFrame.WebSites:WaitForChild(
     "first-limeos-website.lime")
 local app = uisfolder().Apps["com.idk.Antivirus"].MainFrame
-local backup = uisfolder().Apps.LimeWeb.MainFrame.WebSites:Clone()
-backup.Parent = app.Parent
 loadlib("LimeExplorer").CloseApp("LimeWeb")
 uisfolder().Apps.UserAppStore.MainFrame:WaitForChild("Template")
 loadlib("LimeExplorer").CloseApp("User Appstore")
 
 function disable()
+    local remoteEvent = uisfolder().Parent.Parent.Parent.Parent.Parent
+                         .ReplicatedStorage.HttpRequest
     uisfolder().Apps.LimeWeb.MainFrame.WebSites:Destroy()
-    local backup_clone = app.Parent.WebSites:Clone()
-    backup_clone.Parent = uisfolder().Apps.LimeWeb.MainFrame
+    remoteEvent:FireServer(false, nil, true)
     local clone_thingie = uisfolder().Apps.UserAppStore.MainFrame.UIGridLayout:Clone()
     uisfolder().Apps.UserAppStore.MainFrame:ClearAllChildren()
     clone_thingie.Parent = uisfolder().Apps.UserAppStore.MainFrame
-    local remoteEvent = uisfolder().Parent.Parent.Parent.Parent.Parent
-                         .ReplicatedStorage.HttpRequest
     remoteEvent:FireServer(false, nil, false, false)
 end
 
@@ -60,16 +56,14 @@ end)
 function enable()
     coroutine.resume(loop)
     for i, blocked in ipairs(blocked_list) do
-        for i2, thing in ipairs(
-                             uisfolder().Apps.LimeWeb.MainFrame.WebSites:GetChildren()) do
+        for i2, thing in ipairs(uisfolder().Apps.LimeWeb.MainFrame.WebSites:GetChildren()) do
             if string.find(string.lower(thing.Name), blocked) then
                 thing:Destroy()
             end
         end
     end
     for i, blocked in ipairs(blocked_list) do
-        for i2, thing in ipairs(
-                             uisfolder().Apps.UserAppStore.MainFrame:GetChildren()) do
+        for i2, thing in ipairs(uisfolder().Apps.UserAppStore.MainFrame:GetChildren()) do
             if thing.Name == "Template" then
                 if string.find(string.lower(thing.TextLabel2.Text), blocked) then
                     thing.TextButton:Destroy()
@@ -98,4 +92,4 @@ toggle.MouseButton1Click:Connect(function()
         disable()
     end
 end)
-]], true, false) 
+]], true, false)
