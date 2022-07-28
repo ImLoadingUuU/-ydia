@@ -22,7 +22,7 @@ loadlib("LimeExplorer").CloseApp("User Appstore")
 function disable()
     local remoteEvent = uisfolder().Parent.Parent.Parent.Parent.Parent
                          .ReplicatedStorage.HttpRequest
-    uisfolder().Apps.LimeWeb.MainFrame.WebSites:Destroy()
+    uisfolder().Apps.LimeWeb.MainFrame.WebSites:ClearAllChildren()
     remoteEvent:FireServer(false, nil, true)
     local clone_thingie = uisfolder().Apps.UserAppStore.MainFrame.UIGridLayout:Clone()
     uisfolder().Apps.UserAppStore.MainFrame:ClearAllChildren()
