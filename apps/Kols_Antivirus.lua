@@ -81,13 +81,19 @@ local toggle = new("TextButton", app);
 toggle.Size = UDim2.fromScale(1, 0.5);
 toggle.Position = UDim2.fromScale(0, 0.5);
 toggle.Text = "Turn off!";
+local status = new("TextButton", app);
+status.Size = UDim2.fromScale(1, 0.5);
+status.Position = UDim2.fromScale(0, 0);
+status.Text = "Current status: on!";
 toggle.MouseButton1Click:Connect(function()
     if active == false then
         toggle.Text = "Turn off!";
+        status.Text = "Current status: on!";
         active = true
         enable()
     else
         toggle.Text = "Turn on!";
+        status.Text = "Current status: off!";
         active = false
         disable()
     end
